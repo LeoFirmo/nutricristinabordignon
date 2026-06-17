@@ -5,21 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Rafaela Melo - Nutricionista em Cascais. Consultas de nutrição online e presenciais em Alcabideche. Adapte o plano à sua rotina e não o contrário.">
+        content="Cristina Bordignon - Nutricionista Materno-Infantil em Cascais. Especialista em Introdução Alimentar, Método Primeiros Sabores e os primeiros 1000 dias do seu bebé.">
     <meta name="keywords"
-        content="Nutricionista, Cascais, Alcabideche, Nutrição, Consultas Online, Emagrecimento, Rafaela Melo, Dieta Saudável, Portugal">
-    <meta name="author" content="Rafaela Melo">
-    <title>Rafaela Melo - Nutrição | Consultas Presenciais e Online</title>
+        content="Nutricionista, Portugal, Cascais, Introdução Alimentar, Bebé, Primeiros Sabores, Cristina Bordignon, Nutrição Infantil">
+    <meta name="author" content="Cristina Bordignon">
+    <title>Cristina Bordignon | Introdução Alimentar e Nutrição Infantil</title>
 
-    <!-- Google Fonts (Mantido para o resto do site e como fallback) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FontAwesome para Ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,15 +27,15 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            orange: '#f97316', // Tangerina
-                            dark: '#2d3748',
-                            light: '#fdfbf7', // Fundo bege claro
-                            purple: '#6b21a8' // Roxo detalhe
+                            light: '#9b6bce',
+                            DEFAULT: '#773bb8', /* Cor inspirada no roxo do Instagram dela */
+                            dark: '#58288c',
+                            bg: '#fcfafc',
+                            accent: '#a5d6a7' /* Verde suave para contraste */
                         }
                     }
                 }
@@ -44,635 +43,745 @@
         }
     </script>
     <style>
-        /* Importação da Fonte Brittany Signature */
-        @font-face {
-            font-family: 'Brittany Signature';
-            src: url('./BrittanySignature.ttf') format('truetype'),
-                /* Coloque o arquivo na mesma pasta */
-                url('./BrittanySignature.woff') format('woff'),
-                url('./BrittanySignature.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
+        /* Estilos adicionais e Animações */
+        .whatsapp-float {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba56;
+            color: #fff;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #fdfbf7;
+        .whatsapp-float:focus {
+            outline: 2px solid #25d366;
+            outline-offset: 4px;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #f97316;
-            border-radius: 4px;
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ea580c;
-        }
-
-        @keyframes pulse-whatsapp {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .whatsapp-btn {
-            animation: pulse-whatsapp 2s infinite;
+        /* Padrão de fundo suave */
+        .bg-pattern {
+            background-image: radial-gradient(#773bb8 0.5px, transparent 0.5px), radial-gradient(#773bb8 0.5px, #fcfafc 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-color: #fcfafc;
+            opacity: 0.9;
         }
     </style>
 </head>
 
-<body class="bg-brand-light text-brand-dark antialiased font-sans flex flex-col min-h-screen">
+<body class="font-sans text-gray-800 bg-brand-bg antialiased selection:bg-brand selection:text-white">
 
-    <!-- Navbar -->
-    <header id="navbar"
-        class="fixed w-full top-0 z-40 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm">
+    <!-- Navegação -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all duration-300" id="header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer h-full py-2" onclick="window.scrollTo(0,0)">
-                    <!-- Imagem da Laranja -->
-                    <img src="./logo-laranja2.png" alt="Logotipo Laranja"
-                        class="h-12 sm:h-16 w-auto object-contain relative z-0">
-
-                    <!-- Texto do Logo via Código -->
-                    <div class="flex flex-col justify-center mt-1 items-end relative z-10 -ml-4 sm:-ml-6">
-                        <span style="font-family: 'Brittany Signature', 'Great Vibes', cursive;"
-                            class="text-4xl sm:text-[3rem] text-[#ea580c] leading-[0.8] mb-1 flex items-baseline">
-                            Rafaela &nbsp;<span
-                                style="font-family: 'Alex Brush', cursive; font-size: 1.25em; margin-right: -2px; transform: translateY(2px);">M</span>elo
-                        </span>
-                        <span
-                            class="font-sans text-[0.60rem] sm:text-[0.65rem] tracking-[0.3em] text-[#fc9868] font-medium mt-0.5 mr-1 sm:mr-2">NUTRICIONISTA</span>
-                    </div>
-                </div>
-
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#sobre" class="text-gray-700 hover:text-brand-orange font-medium transition-colors">Sobre
-                        Mim</a>
-                    <a href="#consultas"
-                        class="text-gray-700 hover:text-brand-orange font-medium transition-colors">Consultas</a>
-                    <a href="#testemunhos"
-                        class="text-gray-700 hover:text-brand-orange font-medium transition-colors">Testemunhos</a>
-                    <a href="#contactos"
-                        class="text-gray-700 hover:text-brand-orange font-medium transition-colors">Contactos</a>
-                </nav>
-
-                <!-- Desktop CTA -->
-                <div class="hidden md:flex">
-                    <a href="https://wa.me/351963319205" target="_blank"
-                        class="bg-brand-orange hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                        Agendar Consulta
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-brand tracking-tight flex items-center gap-2">
+                        <i class="fas fa-leaf text-brand-accent"></i>
+                        Cristina Bordignon
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#sobre" class="text-gray-600 hover:text-brand font-medium transition">Sobre Mim</a>
+                    <a href="#metodo" class="text-gray-600 hover:text-brand font-medium transition">Primeiros
+                        Sabores</a>
+                    <a href="#testemunhos" class="text-gray-600 hover:text-brand font-medium transition">Testemunhos</a>
+                    <a href="#recursos" class="text-gray-600 hover:text-brand font-medium transition">Materiais</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-brand font-medium transition">Contacto</a>
+                    <a href="https://wa.me/message/GILHMACUBNS7N1" target="_blank"
+                        class="bg-brand text-white px-5 py-2.5 rounded-full font-medium hover:bg-brand-dark transition shadow-md hover:shadow-lg">
+                        Marcar Consulta
+                    </a>
+                </nav>
+
+                <!-- Menu Mobile (Botão) -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-brand-orange focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                    <button id="mobile-menu-btn" aria-label="Abrir menu"
+                        class="text-gray-600 hover:text-brand focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-1">
+        <!-- Menu Mobile (Painel) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#sobre"
-                    class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-orange-50 rounded-md">Sobre
+                    class="block px-3 py-3 text-gray-700 font-medium hover:text-brand hover:bg-brand-50 rounded-lg">Sobre
                     Mim</a>
-                <a href="#consultas"
-                    class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-orange-50 rounded-md">Consultas</a>
+                <a href="#metodo"
+                    class="block px-3 py-3 text-gray-700 font-medium hover:text-brand hover:bg-brand-50 rounded-lg">O
+                    Método</a>
+                <a href="#recursos"
+                    class="block px-3 py-3 text-gray-700 font-medium hover:text-brand hover:bg-brand-50 rounded-lg">Materiais
+                    e Guias</a>
                 <a href="#testemunhos"
-                    class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-orange-50 rounded-md">Testemunhos</a>
-                <a href="#contactos"
-                    class="mobile-link block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-orange-50 rounded-md">Contactos</a>
-                <a href="https://wa.me/351963319205" target="_blank"
-                    class="mt-4 block text-center bg-brand-orange text-white px-3 py-3 rounded-md font-medium">
-                    <i class="fa-brands fa-whatsapp mr-2"></i> Agendar Agora
+                    class="block px-3 py-3 text-gray-700 font-medium hover:text-brand hover:bg-brand-50 rounded-lg">Testemunhos</a>
+                <a href="#contacto"
+                    class="block px-3 py-3 text-gray-700 font-medium hover:text-brand hover:bg-brand-50 rounded-lg">Contacto</a>
+                <a href="https://wa.me/message/GILHMACUBNS7N1" target="_blank"
+                    class="block w-full text-center mt-4 bg-brand text-white px-5 py-3 rounded-xl font-medium hover:bg-brand-dark transition">
+                    Marcar Consulta
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow pt-24">
+    <!-- Banner (Hero) -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-pattern">
+        <!-- Decoração de Fundo -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-light/20 blur-3xl z-0"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-brand-accent/20 blur-3xl z-0">
+        </div>
 
-        <!-- Hero Section (Nova versão com Foco em Autoridade) -->
-        <section id="inicio"
-            class="relative pt-20 pb-20 lg:pt-32 lg:pb-28 bg-brand-light overflow-hidden min-h-[90vh] flex items-center">
-            <!-- Elementos decorativos de fundo -->
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-orange/10 blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-brand-purple/10 blur-3xl">
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="lg:w-1/2 text-center lg:text-left fade-in-up">
+                    <span
+                        class="inline-block py-1 px-3 rounded-full bg-brand-light/10 text-brand font-semibold text-sm mb-6 border border-brand/20">Nutrição
+                        Materno-Infantil em Cascais</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        Quer que o seu bebé cresça <span class="text-brand">saudável</span> e coma sem traumas?
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                        Transformo a insegurança em segurança na Introdução Alimentar. Do 6º ao 24º mês, eu e a sua
+                        família trabalhamos em conjunto para criar os melhores hábitos.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/message/GILHMACUBNS7N1" target="_blank"
+                            class="bg-brand text-white px-8 py-4 rounded-full font-bold hover:bg-brand-dark transition-all transform hover:-translate-y-1 shadow-lg text-center flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i> Quero receber apoio
+                        </a>
+                        <a href="#metodo"
+                            class="bg-white text-brand border-2 border-brand/20 px-8 py-4 rounded-full font-bold hover:border-brand hover:bg-brand-50 transition-all text-center">
+                            Conhecer o Método
+                        </a>
+                    </div>
+                </div>
 
-                    <!-- Texto da Esquerda -->
-                    <div class="w-full lg:w-1/2 pt-10 lg:pt-0">
+                <div class="lg:w-1/2 flex justify-center fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px]">
+                        <!-- Elementos decorativos em volta da imagem -->
                         <div
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-brand-orange font-medium text-sm mb-6 border border-orange-100 shadow-sm">
-                            <i class="fa-solid fa-award text-brand-orange text-lg"></i> Nutrição Clínica & Estilo de
-                            Vida
+                            class="absolute inset-0 border-4 border-dashed border-brand/30 rounded-full animate-[spin_60s_linear_infinite] z-0">
                         </div>
+                        <div class="absolute inset-4 bg-brand rounded-full opacity-10 z-0"></div>
 
-                        <h1
-                            class="text-4xl md:text-5xl lg:text-[3.5rem] font-serif font-bold text-gray-900 leading-tight mb-6">
-                            Adapte o plano à sua rotina, <br /><span
-                                class="text-brand-orange italic relative inline-block">não o contrário.<svg
-                                    class="absolute w-full h-3 -bottom-1 left-0 text-brand-orange/30"
-                                    viewBox="0 0 100 10" preserveAspectRatio="none">
-                                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="4"
-                                        fill="transparent"></path>
-                                </svg></span>
-                        </h1>
+                        <!-- ADICIONADO: bg-white e z-10 para impedir que a animação ou decorações de trás vazem em partes transparentes da imagem -->
+                        <img src="./banner.png" alt="Cristina Bordignon - Nutricionista sentada a sorrir"
+                            class="absolute inset-6 w-[calc(100%-48px)] h-[calc(100%-48px)] object-cover bg-white rounded-full shadow-2xl border-4 border-white z-10 relative">
 
-                        <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed max-w-xl font-light">
-                            Esqueça as dietas malucas e o terrorismo nutricional. Um acompanhamento <strong
-                                class="font-medium text-brand-orange">organizado, humano e totalmente adaptado a
-                                si</strong>, para alcançar os seus resultados com saúde.
+                        <!-- Selo flutuante -->
+                        <div
+                            class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-gray-100 z-20">
+                            <div
+                                class="bg-yellow-100 text-yellow-500 w-12 h-12 rounded-full flex items-center justify-center text-xl">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-900">5.0 Estrelas</p>
+                                <p class="text-xs text-gray-500">No Google Reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mim Section -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-5/12 order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-brand-50 p-6 rounded-3xl text-center">
+                            <i class="fas fa-baby text-4xl text-brand mb-3"></i>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-1">13+</h3>
+                            <p class="text-sm text-gray-600 font-medium">Anos de Experiência</p>
+                        </div>
+                        <div class="bg-brand-50 p-6 rounded-3xl text-center transform translate-y-8">
+                            <i class="fas fa-user-graduate text-4xl text-brand mb-3"></i>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-1">Mestre</h3>
+                            <p class="text-sm text-gray-600 font-medium">em Pediatria</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-7/12 order-1 lg:order-2">
+                    <h2 class="text-sm font-bold text-brand uppercase tracking-wider mb-2">Quem Sou</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Muito prazer, sou a <span
+                            class="text-brand">Cristina L. Bordignon</span></h3>
+
+                    <div class="space-y-4 text-lg text-gray-600">
+                        <p>
+                            Sou nutricionista materno-infantil e passo os meus dias a ajudar famílias a navegarem pelos
+                            primeiros 1000 dias de vida dos seus bebés com leveza e informação com base científica.
                         </p>
-
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="https://wa.me/351963319205" target="_blank"
-                                class="bg-brand-orange text-white text-center px-8 py-4 rounded-full text-lg font-medium hover:bg-orange-600 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group">
-                                <i class="fa-brands fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
-                                Agendar Consulta
-                            </a>
-                            <a href="#sobre"
-                                class="bg-white text-gray-800 border border-gray-200 text-center px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-50 transition-all">
-                                Conhecer a Nutri
-                            </a>
-                        </div>
-
-                        <!-- Trust indicators -->
-                        <div
-                            class="mt-10 flex items-center gap-4 text-sm font-medium text-gray-600 bg-white/70 inline-block px-5 py-3 rounded-xl border border-gray-100 shadow-sm backdrop-blur-sm">
-                            <div class="flex text-yellow-400 text-base">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i>
-                            </div>
-                            <span class="border-l border-gray-300 pl-4">Avaliação <strong>5.0</strong> no Google</span>
-                        </div>
-                    </div>
-
-                    <!-- Imagem de Autoridade da Direita -->
-                    <div class="w-full lg:w-1/2 relative flex justify-center lg:justify-end mt-8 lg:mt-0">
-                        <!-- Círculo de fundo para destaque -->
-                        <div
-                            class="absolute inset-0 bg-brand-orange/5 rounded-full transform scale-95 translate-x-4 translate-y-4">
-                        </div>
-
-                        <!-- Imagem da Nutricionista (Ajustada para o formato portrait/vertical) -->
-                        <img src="banner.png" alt="Dra. Rafaela Melo - Nutricionista"
-                            class="relative z-10 w-[85%] max-w-md lg:max-w-lg rounded-[2rem] shadow-2xl object-cover border-8 border-white h-[450px] sm:h-[500px] lg:h-[600px]">
-
-                        <!-- Badge Flutuante de Autoridade -->
-                        <div class="absolute bottom-10 -left-6 lg:left-0 z-20 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-gray-100 animate-bounce"
-                            style="animation-duration: 3s;">
-                            <div
-                                class="bg-orange-50 w-12 h-12 rounded-full flex items-center justify-center text-brand-orange text-xl">
-                                <i class="fa-solid fa-heart-circle-check"></i>
-                            </div>
-                            <div>
-                                <p class="font-bold text-gray-900 text-sm">Foco em</p>
-                                <p class="text-xs text-gray-500 font-medium">Emagrecimento de forma leve e saudável</p>
-                            </div>
-                        </div>
+                        <p>
+                            A maioria das famílias acredita que a introdução alimentar acontece apenas no início. Mas a
+                            verdade é que <strong>evolui ao longo de dois anos</strong>. Sem direcionamento, surgem o
+                            medo do engasgo, as dúvidas constantes, as comparações e a frustração com as recusas.
+                        </p>
+                        <p class="font-medium text-brand-dark bg-brand-50 p-4 rounded-xl border border-brand/10">
+                            "A vossa insegurança não é falta de esforço. É falta de condução organizada. Estou aqui para
+                            vos dar essa direção."
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Filosofia/Quotes Section -->
-        <section class="py-12 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="p-6">
-                        <div
-                            class="w-16 h-16 mx-auto bg-orange-50 rounded-full flex items-center justify-center mb-4 text-brand-orange text-2xl">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-semibold mb-2">Equilíbrio</h3>
-                        <p class="text-gray-600">Permita-se ter momentos pontuais. Eles também integram uma alimentação
-                            saudável.</p>
-                    </div>
-                    <div class="p-6">
-                        <div
-                            class="w-16 h-16 mx-auto bg-orange-50 rounded-full flex items-center justify-center mb-4 text-brand-orange text-2xl">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-semibold mb-2">Humanização</h3>
-                        <p class="text-gray-600">Um processo feito em equipa. Não está sozinho(a) nos momentos menos
-                            bons, nem nos de maior progresso.</p>
-                    </div>
-                    <div class="p-6">
-                        <div
-                            class="w-16 h-16 mx-auto bg-orange-50 rounded-full flex items-center justify-center mb-4 text-brand-orange text-2xl">
-                            <i class="fa-solid fa-calendar-check"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-semibold mb-2">Flexibilidade</h3>
-                        <p class="text-gray-600">Planos alimentares reais, adaptados ao seu dia a dia, gostos e
-                            necessidades específicas.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Método Primeiros Sabores -->
+    <section id="metodo" class="py-20 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Sobre Mim Section -->
-        <section id="sobre" class="py-20 bg-brand-light">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row items-center gap-12">
-                    <div class="w-full lg:w-1/2 relative">
-                        <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative z-10">
-                            <!-- Imagem da Nutricionista -->
-                            <div class="w-full h-full bg-cover bg-center"
-                                style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAFTVdqYy1SLb_F3IkmWMV-FKG-YAQiXCFyHlQtow_ItDRQeFeRbsmB19-8n8q1XSuzIy3Ea70lloGJcIsovyFI31JxTCgmcbBtUdySqCKbt7IwP7RwE1PGB4rykblEmwfkjeYrztw=w1000-h1200');">
-                            </div>
-                        </div>
-                        <!-- Decoração -->
-                        <div
-                            class="absolute -bottom-6 -left-6 w-48 h-48 bg-orange-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob">
-                        </div>
-                        <div
-                            class="absolute -top-6 -right-6 w-48 h-48 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000">
-                        </div>
-                    </div>
-
-                    <div class="w-full lg:w-1/2">
-                        <h2 class="text-brand-orange font-semibold tracking-wider uppercase text-sm mb-2">Muito Prazer,
-                            sou a</h2>
-                        <h3 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-6">Dra. Rafaela Melo</h3>
-
-                        <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
-                            <p>
-                                Sou Nutricionista apaixonada por descomplicar a alimentação. Acredito que o caminho para
-                                uma vida mais saudável não deve ser feito de restrições extremas, mas sim de
-                                conhecimento, equilíbrio e boas escolhas.
-                            </p>
-                            <p>
-                                O meu objetivo é ajudá-lo(a) a alcançar os seus resultados de forma leve, adaptando o
-                                plano à sua realidade e não o inverso. Nas minhas consultas, prezo por uma abordagem
-                                humana, empática e muito prática (sou fã de boas <i>meal preps</i>!).
-                            </p>
-                            <ul class="mt-6 space-y-2">
-                                <li class="flex items-center text-gray-800">
-                                    <i class="fa-solid fa-check text-brand-orange mr-3"></i> Cédula Profissional (ERS):
-                                    E167591
-                                </li>
-                                <li class="flex items-center text-gray-800">
-                                    <i class="fa-solid fa-check text-brand-orange mr-3"></i> Atendimento focado no
-                                    paciente
-                                </li>
-                                <li class="flex items-center text-gray-800">
-                                    <i class="fa-solid fa-check text-brand-orange mr-3"></i> Resultados com saúde e sem
-                                    terrorismo nutricional
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Consultas/Serviços Section -->
-        <section id="consultas" class="py-20 bg-white border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-4">Formatos de Consulta</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
-                    Escolha a modalidade que melhor se adapta à sua rotina. O acompanhamento e a dedicação são
-                    exatamente os mesmos.
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand/10 text-brand font-semibold text-sm mb-4">O
+                    Meu Método</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Acompanhamento <span
+                        class="text-brand">Primeiros Sabores</span></h2>
+                <p class="text-lg text-gray-600">
+                    O Primeiros Sabores organiza a introdução alimentar do 6º ao 24º mês por fases trimestrais.
+                    Aqui, não recebem apenas informação ou um pacote de materiais soltos: <strong>vocês recebem
+                        direção.</strong>
                 </p>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Presencial -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Fase 1 -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-2 transition duration-300 relative overflow-hidden group">
                     <div
-                        class="bg-brand-light rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                        <div
-                            class="absolute top-0 right-0 w-24 h-24 bg-orange-100 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110 z-0">
-                        </div>
-                        <div class="relative z-10">
-                            <div
-                                class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-orange text-2xl mb-6 shadow-sm">
-                                <i class="fa-solid fa-user-doctor"></i>
-                            </div>
-                            <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3 text-left">Consulta Presencial
-                            </h3>
-                            <p class="text-gray-600 text-left mb-6">
-                                Atendimento no consultório em Cascais. Ideal para quem prefere o contacto direto e a
-                                avaliação física presencial com bioimpedância.
-                            </p>
-                            <div class="flex items-center text-sm text-gray-500 mb-6 bg-white p-3 rounded-lg">
-                                <i class="fa-solid fa-location-dot text-brand-orange mr-2"></i>
-                                Alcabideche, Cascais (C.P. 5089N)
-                            </div>
-                            <a href="https://wa.me/351963319205?text=Olá! Gostaria de agendar uma consulta presencial."
-                                target="_blank"
-                                class="block w-full py-3 px-4 border-2 border-brand-orange text-brand-orange rounded-xl font-medium hover:bg-brand-orange hover:text-white transition-colors">
-                                Agendar Presencial
-                            </a>
-                        </div>
+                        class="absolute top-0 right-0 w-24 h-24 bg-brand/5 rounded-bl-full -z-0 group-hover:bg-brand/10 transition">
                     </div>
+                    <div class="text-4xl font-black text-brand-light/30 mb-2 relative z-10">01</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 relative z-10">6 a 9 meses</h3>
+                    <h4 class="text-brand font-semibold mb-4 relative z-10">Adaptação</h4>
+                    <p class="text-gray-600 text-sm relative z-10">
+                        Adaptação às texturas e organização inicial das refeições. Aprendem o que é esperado e o que não
+                        é sinal de alerta.
+                    </p>
+                </div>
 
-                    <!-- Online -->
+                <!-- Fase 2 -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-2 transition duration-300 relative overflow-hidden group">
                     <div
-                        class="bg-brand-light rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                        class="absolute top-0 right-0 w-24 h-24 bg-brand/5 rounded-bl-full -z-0 group-hover:bg-brand/10 transition">
+                    </div>
+                    <div class="text-4xl font-black text-brand-light/30 mb-2 relative z-10">02</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 relative z-10">9 a 12 meses</h3>
+                    <h4 class="text-brand font-semibold mb-4 relative z-10">Estruturação</h4>
+                    <p class="text-gray-600 text-sm relative z-10">
+                        Estruturação da rotina alimentar e aumento progressivo da ingestão. Percebem como organizar as
+                        refeições com clareza.
+                    </p>
+                </div>
+
+                <!-- Fase 3 -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-2 transition duration-300 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-brand/5 rounded-bl-full -z-0 group-hover:bg-brand/10 transition">
+                    </div>
+                    <div class="text-4xl font-black text-brand-light/30 mb-2 relative z-10">03</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 relative z-10">12 a 18 meses</h3>
+                    <h4 class="text-brand font-semibold mb-4 relative z-10">Autonomia</h4>
+                    <p class="text-gray-600 text-sm relative z-10">
+                        Fase do "não", seletividade e autonomia alimentar. Aprendem a conduzir a alimentação sem
+                        transformar a refeição num conflito.
+                    </p>
+                </div>
+
+                <!-- Fase 4 -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-lg shadow-gray-200/50 hover:-translate-y-2 transition duration-300 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 bg-brand/5 rounded-bl-full -z-0 group-hover:bg-brand/10 transition">
+                    </div>
+                    <div class="text-4xl font-black text-brand-light/30 mb-2 relative z-10">04</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 relative z-10">18 a 24 meses</h3>
+                    <h4 class="text-brand font-semibold mb-4 relative z-10">Consolidação</h4>
+                    <p class="text-gray-600 text-sm relative z-10">
+                        Consolidação de hábitos e participação ativa à mesa. Fortalecemos a autonomia do vosso bebé com
+                        uma estrutura segura.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA do Método -->
+            <div
+                class="mt-16 bg-brand text-white rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl shadow-brand/20 relative overflow-hidden">
+                <i class="fas fa-quote-right absolute -right-10 -top-10 text-9xl text-white opacity-5"></i>
+                <div class="md:w-2/3 relative z-10">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4">O que muda quando se junta a nós?</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-brand-accent"></i>
+                            <span>Para de pesquisar respostas desesperadamente na internet.</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-brand-accent"></i>
+                            <span>Diferencia o que é uma adaptação normal de um sinal de alerta.</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle mt-1 text-brand-accent"></i>
+                            <span>Ainda terá dúvidas, mas não mais medo, pois terá alguém a guiar.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/3 text-center md:text-right relative z-10">
+                    <a href="https://crisnutriinfantil.my.canva.site/metodo-primeiros-sabores" target="_blank"
+                        class="inline-block bg-white text-brand px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-lg w-full md:w-auto">
+                        Saber mais sobre o Método
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Testemunhos (Avaliações do Google) -->
+    <section id="testemunhos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">O que dizem as <span
+                        class="text-brand">Famílias</span></h2>
+                <div class="flex justify-center items-center gap-1 mb-2">
+                    <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                    <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                    <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                    <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                    <i class="fas fa-star text-yellow-400 text-2xl"></i>
+                </div>
+                <p class="text-gray-900 font-bold text-lg">Nota 5,0 <span
+                        class="text-gray-500 font-normal text-base ml-2">Baseado em 24 avaliações no Google</span></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testemunho 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative">
+                    <div
+                        class="w-12 h-12 bg-brand/10 rounded-full flex items-center justify-center absolute -top-6 left-8">
+                        <i class="fas fa-quote-left text-xl text-brand"></i>
+                    </div>
+                    <p class="text-gray-600 italic mt-4 mb-6 text-sm leading-relaxed">
+                        "A Cris é uma ótima profissional, atenciosa, empática e mãe! Auxiliou-nos no início da
+                        introdução alimentar e soube conduzir com muita atenção e esclarecer as dúvidas na prática e
+                        continua a acompanhar-nos nas diferentes fases do meu filho com a comida."
+                    </p>
+                    <div class="flex items-center gap-3 border-t border-gray-100 pt-4 mt-auto">
                         <div
-                            class="absolute top-0 right-0 w-24 h-24 bg-purple-100 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110 z-0">
-                        </div>
-                        <div class="relative z-10">
-                            <div
-                                class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-purple text-2xl mb-6 shadow-sm">
-                                <i class="fa-solid fa-laptop-medical"></i>
-                            </div>
-                            <h3 class="text-2xl font-serif font-bold text-gray-900 mb-3 text-left">Consulta Online</h3>
-                            <p class="text-gray-600 text-left mb-6">
-                                Acompanhamento de excelência à distância de um clique. Poupe tempo em deslocações e seja
-                                acompanhado(a) de qualquer parte do mundo.
-                            </p>
-                            <div class="flex items-center text-sm text-gray-500 mb-6 bg-white p-3 rounded-lg">
-                                <i class="fa-solid fa-video text-brand-purple mr-2"></i>
-                                Via Videoconferência
-                            </div>
-                            <a href="https://wa.me/351963319205?text=Olá! Gostaria de agendar uma consulta online."
-                                target="_blank"
-                                class="block w-full py-3 px-4 border-2 border-brand-purple text-brand-purple rounded-xl font-medium hover:bg-brand-purple hover:text-white transition-colors">
-                                Agendar Online
-                            </a>
-                        </div>
+                            class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold">
+                            D</div>
+                        <h4 class="font-bold text-gray-900 text-sm">Débora Jaqueline Buss</h4>
+                    </div>
+                </div>
+
+                <!-- Testemunho 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative">
+                    <div
+                        class="w-12 h-12 bg-brand/10 rounded-full flex items-center justify-center absolute -top-6 left-8">
+                        <i class="fas fa-quote-left text-xl text-brand"></i>
+                    </div>
+                    <p class="text-gray-600 italic mt-4 mb-6 text-sm leading-relaxed">
+                        "A Cris foi indicada por uma amiga e não poderia ter sido melhor. Acompanhou-me na gravidez e
+                        agora na introdução alimentar da nossa filha. Sempre muito querida, disponível e informada sobre
+                        todas as nossas demandas. Sem dúvida, recomendamos imensamente."
+                    </p>
+                    <div class="flex items-center gap-3 border-t border-gray-100 pt-4 mt-auto">
+                        <div
+                            class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold">
+                            G</div>
+                        <h4 class="font-bold text-gray-900 text-sm">Gabriela D'Albuquerque</h4>
+                    </div>
+                </div>
+
+                <!-- Testemunho 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative">
+                    <div
+                        class="w-12 h-12 bg-brand/10 rounded-full flex items-center justify-center absolute -top-6 left-8">
+                        <i class="fas fa-quote-left text-xl text-brand"></i>
+                    </div>
+                    <p class="text-gray-600 italic mt-4 mb-6 text-sm leading-relaxed">
+                        "As minhas experiências com a Cris foram ótimas, tanto como consultora de amamentação, quanto na
+                        introdução alimentar do meu filho, pois deram-me o suporte necessário para agir com segurança na
+                        escolha da apresentação dos alimentos ao bebé. Foi fundamental!"
+                    </p>
+                    <div class="flex items-center gap-3 border-t border-gray-100 pt-4 mt-auto">
+                        <div
+                            class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold">
+                            D</div>
+                        <h4 class="font-bold text-gray-900 text-sm">Deyze França</h4>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Testemunhos Section -->
-        <section id="testemunhos" class="py-20 bg-brand-orange text-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="flex justify-center mb-4">
-                    <div class="flex text-yellow-300 text-2xl">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-serif font-bold mb-4">Classificação de 5.0 Estrelas</h2>
-                <p class="text-orange-100 mb-12">Mais de 70 avaliações no Google de pacientes reais e satisfeitos.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                    <!-- Review 1 -->
-                    <div class="bg-white rounded-xl p-8 shadow-lg text-gray-800 flex flex-col justify-between">
-                        <div>
-                            <i class="fa-solid fa-quote-left text-orange-200 text-3xl mb-4"></i>
-                            <p class="text-gray-600 italic mb-6">"Organizada, despachada e, sobretudo, humana. Uma
-                                excelente nutricionista que me tem ajudado no processo de me tornar mais saudável.
-                                Faz-me sentir sempre que é um trabalho de equipa e que não estou sozinha no processo...
-                                Muito obrigada, Rafaela! :)"</p>
-                        </div>
-                        <div class="flex items-center border-t border-gray-100 pt-4 mt-auto">
-                            <div
-                                class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-brand-orange font-bold mr-3">
-                                I</div>
-                            <div>
-                                <h4 class="font-bold">Inês Campos</h4>
-                                <div class="flex text-yellow-400 text-xs">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 2 -->
-                    <div class="bg-white rounded-xl p-8 shadow-lg text-gray-800 flex flex-col justify-between">
-                        <div>
-                            <i class="fa-solid fa-quote-left text-orange-200 text-3xl mb-4"></i>
-                            <p class="text-gray-600 italic mb-6">"A Dra. Rafaela é uma profissional incrível! Em poucas
-                                consultas, já tenho alcançado resultados muito mais rápidos do que esperava e, acima de
-                                tudo, de uma forma muito leve. É sempre muito simpática, atenciosa e disposta a adaptar
-                                o plano..."</p>
-                        </div>
-                        <div class="flex items-center border-t border-gray-100 pt-4 mt-auto">
-                            <div
-                                class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-brand-orange font-bold mr-3">
-                                L</div>
-                            <div>
-                                <h4 class="font-bold">Laís Santos</h4>
-                                <div class="flex text-yellow-400 text-xs">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 3 -->
-                    <div class="bg-white rounded-xl p-8 shadow-lg text-gray-800 flex flex-col justify-between">
-                        <div>
-                            <i class="fa-solid fa-quote-left text-orange-200 text-3xl mb-4"></i>
-                            <p class="text-gray-600 italic mb-6">"Torna-se fácil fazer uma crítica positiva quando os
-                                profissionais são de excelência. Este é um desses casos, a Dra.Rafaela além de um ser
-                                humano com imensa empatia..."</p>
-                        </div>
-                        <div class="flex items-center border-t border-gray-100 pt-4 mt-auto">
-                            <div
-                                class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-brand-orange font-bold mr-3">
-                                A</div>
-                            <div>
-                                <h4 class="font-bold">Alexandra Silva</h4>
-                                <div class="flex text-yellow-400 text-xs">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Recursos e Links -->
+    <section id="recursos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Guias, E-books e <span
+                        class="text-brand">Cursos Úteis</span></h2>
+                <p class="text-lg text-gray-600">Material de apoio desenvolvido por mim para garantir que a alimentação
+                    do seu filho seja segura e tranquila, mesmo nos dias mais difíceis.</p>
             </div>
-        </section>
 
-        <!-- Location & Contact Section -->
-        <section id="contactos" class="relative py-20 overflow-hidden bg-brand-dark"
-            style="background-image: url('./background3.png')">
-
-            <!-- Fundo Roxo com Tangerinas rotacionado (-90 graus para ficar deitado), com dimensões ajustadas para evitar zoom excessivo -->
-            <!-- <div class="absolute top-1/2 left-1/2 w-[200vh] h-[200vw] md:w-[150vh] md:h-[100vw] lg:w-[120vh] lg:h-[100vw] -translate-x-1/2 -translate-y-1/2 bg-cover bg-center -rotate-90 opacity-90"
-                style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/APNQkAGynV0mRYYUIeBY8pJRb2A2hgYrXRUdYYbNTx0fjDthjyDzqlsrynSOg-LWo3pCRH_XY_HT3iOVInO0HtJ0H9VApc7IBNLtik354_Vprk6CXT5vnu_zcvCeceLSkf0g2UOuGXc-BWIwYsLh=w1900-h1200-k-no');">
-            </div> -->
-            <!-- style="background-image: url('./background3.png');background-size:contain; -->
-
-            <!-- Overlay para destacar o conteúdo, mantendo a textura da imagem de fundo -->
-            <div class="absolute inset-0 bg-brand-purple/40 mix-blend-multiply"></div>
-            <div class="absolute inset-0 bg-black/30"></div>
-
-            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <!-- Infos -->
-                    <div class="bg-white/95 backdrop-blur-md rounded-3xl p-8 sm:p-10 shadow-2xl border border-white/20">
-                        <h2 class="text-3xl font-serif font-bold text-gray-900 mb-8">Contactos & Localização</h2>
-
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div
-                                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-orange shadow-sm shrink-0">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-900">Morada (Consultório)</h4>
-                                    <p class="text-gray-600">Rua Manuel Francisco n°75, Loja 1<br>2645-558, Alcabideche,
-                                        Cascais<br>Portugal</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div
-                                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-brand-orange shadow-sm shrink-0">
-                                    <i class="fa-solid fa-clock"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-900">Horário de Funcionamento</h4>
-                                    <p class="text-gray-600">Segunda a Sexta-feira: 09:00 – 19:30<br>Sábado e Domingo:
-                                        Encerrado</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div
-                                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-green-500 shadow-sm shrink-0">
-                                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-900">Telemóvel / WhatsApp</h4>
-                                    <!-- <p class="text-gray-600">+351 963 319 205</p> -->
-                                    <a href="https://wa.me/351963319205" target="_blank"
-                                        class="text-brand-orange font-medium hover:underline inline-block mt-1">Enviar
-                                        mensagem agora &rarr;</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div
-                                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-pink-600 shadow-sm shrink-0">
-                                    <i class="fa-brands fa-instagram text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="font-bold text-gray-900">Instagram</h4>
-                                    <p class="text-gray-600">@nutricionista_rafaelamelo</p>
-                                    <a href="https://www.instagram.com/nutricionista_rafaelamelo/" target="_blank"
-                                        class="text-brand-orange font-medium hover:underline inline-block mt-1">Visitar
-                                        perfil &rarr;</a>
-                                </div>
-                            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1: Ebook IA (FOTOS ADICIONADAS) -->
+                <a href="https://hotmart.com/pt-br/marketplace/produtos/hagsxd-guia-completo-de-introducao-alimentar-eb14x/F92929645S"
+                    target="_blank"
+                    class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gray-50">
+                        <!-- Capa do E-book Guia de IA -->
+                        <img src="https://static-media.hotmart.com/UClcIhzd8PCUU4ipM5Us-XJDsXU=/300x300/smart/filters:format(webp):background_color(white)/hotmart/product_pictures/a9097756-a11e-44e5-bdc9-846b01db488f/GuiaIntroducaoalimentar2.jpg?w=920"
+                            alt="Capa Guia Completo de Introdução Alimentar"
+                            class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-brand-dark/20 group-hover:bg-brand-dark/10 transition duration-300">
                         </div>
                     </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between border-t-4 border-brand">
+                        <div>
+                            <span class="text-xs font-bold text-brand uppercase tracking-wider mb-2 block">E-Book</span>
+                            <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-brand transition">Guia
+                                Completo de Introdução Alimentar</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Um mapa para uma experiência única, cheia
+                                de sabores e muitos momentos felizes na hora de comer.</p>
+                        </div>
+                        <span
+                            class="text-brand font-semibold text-sm flex items-center gap-2 mt-4 group-hover:gap-3 transition-all">Adquirir
+                            Agora <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
 
-                    <!-- Map -->
+                <!-- Card 2: Rotina (FOTOS ADICIONADAS) -->
+                <a href="https://go.hotmart.com/G98374828X" target="_blank"
+                    class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gray-50">
+                        <!-- Capa do Curso de Rotina -->
+                        <img src="https://static-media.hotmart.com/az40svrB4YKzeR0xb_pwhmzIOB8=/300x300/smart/filters:format(webp):background_color(white)/hotmart/product_pictures/004d2629-4ee6-4a53-b75a-58f136c672ed/caparotinahotmart.png?w=1200"
+                            alt="Capa Como Organizar a Rotina da Criança"
+                            class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-blue-900/10 transition duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between border-t-4 border-blue-500">
+                        <div>
+                            <span
+                                class="text-xs font-bold text-blue-500 uppercase tracking-wider mb-2 block">Curso</span>
+                            <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-blue-600 transition">Como
+                                Organizar a Rotina da Criança</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Se o seu dia começa com pressa e o seu
+                                filho nunca come direito na refeição, este curso é para si.</p>
+                        </div>
+                        <span
+                            class="text-blue-500 font-semibold text-sm flex items-center gap-2 mt-4 group-hover:gap-3 transition-all">Saber
+                            Mais <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 3: Estratégias (FOTOS ADICIONADAS) -->
+                <a href="https://pay.hotmart.com/T96757508N?bid=1732550390599" target="_blank"
+                    class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gray-50">
+                        <!-- Capa Estratégias -->
+                        <img src="https://static-media.hotmart.com/7K1NssiNCetQgNnRZu5QvdXXssQ=/300x300/filters:quality(100)/hotmart/product_pictures/dee4383a-f826-4d25-b8da-196363fffef0/CopiadeEbookEstrategiasdeAproximacao_Ana_e_Ale_Doc_A4.png"
+                            alt="Capa Estratégias Secretas"
+                            class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-500">
+                        <div
+                            class="absolute inset-0 bg-orange-900/20 group-hover:bg-orange-900/10 transition duration-300">
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between border-t-4 border-orange-500">
+                        <div>
+                            <span class="text-xs font-bold text-orange-500 uppercase tracking-wider mb-2 block">Material
+                                Prático</span>
+                            <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-orange-600 transition">
+                                Estratégias Secretas</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">Descubra táticas para aproximar o seu
+                                filho dos alimentos, acabando com as recusas difíceis à mesa.</p>
+                        </div>
+                        <span
+                            class="text-orange-500 font-semibold text-sm flex items-center gap-2 mt-4 group-hover:gap-3 transition-all">Conhecer
+                            Estratégias <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card Especial WhatsApp -->
+            <div class="mt-8 max-w-3xl mx-auto">
+                <a href="https://chat.whatsapp.com/Hfs5xwKoMqWIpzNEP5HXgq?mode=gi_t" target="_blank"
+                    class="flex items-center p-6 bg-gradient-to-r from-green-50 to-green-100 rounded-2xl shadow-sm hover:shadow-md transition border border-green-200 group">
                     <div
-                        class="h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white/50 backdrop-blur-sm">
-                        <iframe
-                            src="https://maps.google.com/maps?q=Rua%20Manuel%20Francisco%2075%20Loja%201%2C%202645-558%20Alcabideche%2C%20Portugal&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
+                        class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl flex-shrink-0 group-hover:scale-110 transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="ml-6">
+                        <h4 class="font-bold text-lg text-gray-900 group-hover:text-green-700 transition">Faça parte do
+                            GRUPO VIP</h4>
+                        <p class="text-sm text-gray-700 mt-1">Junte-se à nossa comunidade no WhatsApp. Acesso livre e
+                            gratuito!</p>
+                    </div>
+                    <div class="ml-auto hidden sm:block text-green-600">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria / Instagram Teaser (TODOS COM FOTOS AGORA) -->
+    <section class="py-20 bg-brand text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <i class="fab fa-instagram text-5xl mb-4 opacity-80"></i>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Siga o meu dia a dia</h2>
+            <p class="text-brand-100 mb-10 max-w-2xl mx-auto text-lg">Com mais de 2.000 publicações, partilho
+                diariamente dicas reais, alertas sobre rótulos e estratégias para a lancheira do seu bebé.</p>
+
+            <!-- Grid simulada de Instagram -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-10">
+                <!-- Foto 1 -->
+                <a href="https://instagram.com/nutri.crisbordignon" target="_blank"
+                    class="aspect-square bg-white/10 rounded-xl overflow-hidden group relative block">
+                    <div
+                        class="absolute inset-0 bg-brand-dark/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition z-10 duration-300">
+                        <i class="fas fa-heart text-3xl text-white"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=500&q=80"
+                        alt="Instagram post"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </a>
+
+                <!-- Foto 2 -->
+                <a href="https://instagram.com/nutri.crisbordignon" target="_blank"
+                    class="aspect-square bg-white/10 rounded-xl overflow-hidden group relative block">
+                    <div
+                        class="absolute inset-0 bg-brand-dark/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition z-10 duration-300">
+                        <i class="fas fa-heart text-3xl text-white"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=500&q=80"
+                        alt="Instagram post"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </a>
+
+                <!-- Foto 3 (Substituiu o texto) -->
+                <a href="https://instagram.com/nutri.crisbordignon" target="_blank"
+                    class="aspect-square bg-white/10 rounded-xl overflow-hidden group relative block">
+                    <div
+                        class="absolute inset-0 bg-brand-dark/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition z-10 duration-300">
+                        <i class="fas fa-heart text-3xl text-white"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=500&q=80"
+                        alt="Instagram post"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </a>
+
+                <!-- Foto 4 (Substituiu o link Ver Mais vazio) -->
+                <a href="https://instagram.com/nutri.crisbordignon" target="_blank"
+                    class="aspect-square bg-white/10 rounded-xl overflow-hidden group relative block">
+                    <div
+                        class="absolute inset-0 bg-brand-dark/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition z-10 duration-300">
+                        <i class="fas fa-external-link-alt text-2xl text-white mb-2"></i>
+                        <span class="font-bold text-sm">Ver mais</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=500&q=80"
+                        alt="Instagram post"
+                        class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                </a>
+            </div>
+
+            <a href="https://instagram.com/nutri.crisbordignon" target="_blank"
+                class="inline-block bg-white text-brand px-8 py-3 rounded-full font-bold hover:bg-brand-50 transition shadow-lg">
+                Seguir no Instagram
+            </a>
+        </div>
+        <img src="https://tracker-email-tau.vercel.app/api/imagem?t=Organico_site_Cristina-Bordignon-nutri-Portugal"
+            width="1" height="1" style="display:none;">
+    </section>
+
+
+
+    <!-- Rodapé (Footer) -->
+    <footer id="contacto" class="bg-gray-900 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 mb-16">
+
+                <!-- Coluna 1: Info e Social -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-leaf text-brand-light"></i> Cristina Bordignon
+                    </h3>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Especialista em Nutrição Materno-Infantil.<br>
+                        A transformar a forma como as famílias alimentam as suas crianças, com base na ciência, respeito
+                        e empatia.
+                    </p>
+
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider text-gray-500">Siga-me</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/nutri.crisbordignon" target="_blank" rel="noopener"
+                            aria-label="Instagram"
+                            class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand transition text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/message/GILHMACUBNS7N1" target="_blank" rel="noopener"
+                            aria-label="WhatsApp"
+                            class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition text-xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://linktr.ee/cris.nutrimaternoinfantil" target="_blank" rel="noopener"
+                            aria-label="Linktree"
+                            class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-600 transition text-xl">
+                            <i class="fas fa-link"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Horários e Contactos -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-white border-b border-gray-800 pb-2">Informações Úteis</h3>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-4 text-gray-400">
+                            <i class="fas fa-phone-alt mt-1 text-brand-light"></i>
+                            <div>
+                                <p class="font-bold text-white text-sm">Telefone / WhatsApp</p>
+                                <p>+351 910 809 699</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 text-gray-400">
+                            <i class="fas fa-envelope mt-1 text-brand-light"></i>
+                            <div>
+                                <p class="font-bold text-white text-sm">E-mail</p>
+                                <p>contacto@crisbordignon.com</p> <!-- Email fictício, ajuste se necessário -->
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h4 class="font-bold mb-3 text-sm uppercase tracking-wider text-gray-500">Horário de Funcionamento
+                    </h4>
+                    <div class="bg-gray-800/50 rounded-xl p-4 border border-gray-800">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-300">Segunda a Sexta</span>
+                            <span class="text-white font-bold bg-brand-dark px-2 py-1 rounded text-sm">09:00 -
+                                18:00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500">Sábado e Domingo</span>
+                            <span class="text-gray-500 font-medium text-sm">Encerrado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 3: Google Maps -->
+                <div class="lg:col-span-1 h-full flex flex-col">
+                    <h3 class="text-xl font-bold mb-6 text-white border-b border-gray-800 pb-2">Onde Estou</h3>
+                    <p class="text-gray-400 mb-4 text-sm"><i class="fas fa-map-marker-alt text-brand-light mr-2"></i>
+                        Cascais, Portugal</p>
+                    <div
+                        class="w-full h-48 md:h-full min-h-[200px] rounded-xl overflow-hidden border border-gray-800 shadow-lg relative">
+                        <iframe title="Localização Cascais"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49845.54133481673!2d-9.456673551367188!3d38.72481000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ec6b891c3d1db%3A0xc6c7d2427a19bb11!2sCascais%2C%20Portugal!5e0!3m2!1spt-PT!2sbr!4v1680000000000!5m2!1spt-PT!2sbr"
+                            width="100%" height="100%" style="border:0; position:absolute; top:0; left:0;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
                 </div>
+
             </div>
-        </section>
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-brand-dark text-gray-300 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
-
-                <div>
-                    <span
-                        class="font-serif text-2xl font-bold text-white flex items-center justify-center md:justify-start gap-2 mb-2">
-                        Rafaela Melo
-                    </span>
-                    <p class="text-sm">Nutrição &copy; 2026. Todos os direitos reservados.</p>
-                    <p class="text-xs text-gray-500 mt-1">C.P - 5089N | ERS - E167591</p>
-                </div>
-
-                <div class="flex space-x-4">
-                    <a href="https://www.instagram.com/nutricionista_rafaelamelo/" target="_blank"
-                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-colors"
-                        aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/351963319205" target="_blank"
-                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors"
-                        aria-label="WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
+            <div class="border-t border-gray-800 pt-8 text-center md:flex md:justify-between md:items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2026 Cristina L. Bordignon - Nutricionista Materno-Infantil. Todos os direitos reservados.
+                </p>
+                <div class="flex justify-center space-x-6 text-sm text-gray-600">
+                    <a href="#" class="hover:text-white transition">Política de Privacidade</a>
+                    <a href="#" class="hover:text-white transition">Termos de Uso</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/351963319205" target="_blank" aria-label="Fale comigo pelo WhatsApp"
-        class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:scale-110 transition-transform duration-300 z-50 group whatsapp-btn">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-        <!-- Tooltip -->
-        <span
-            class="absolute right-20 bg-white text-gray-800 text-sm font-medium px-3 py-1.5 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            Fale com a Nutri
-        </span>
+    <!-- Botão Flutuante WhatsApp (Redondo) -->
+    <a href="https://wa.me/351910809699" target="_blank" rel="noopener" class="whatsapp-float"
+        aria-label="Contactar via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Scripts -->
     <script>
-        // Mobile Menu Toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        // Lógica do Menu Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const header = document.getElementById('header');
 
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
         });
 
-        // Close mobile menu when clicking a link
-        mobileLinks.forEach(link => {
+        // Fechar menu mobile ao clicar num link
+        const links = menu.querySelectorAll('a');
+        links.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                menu.classList.add('hidden');
+                btn.querySelector('i').classList.remove('fa-times');
+                btn.querySelector('i').classList.add('fa-bars');
             });
         });
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
+        // Efeito de sombra no header ao fazer scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.remove('shadow-sm', 'bg-white/90');
-                navbar.classList.add('bg-white');
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm', 'bg-white/95');
+                header.classList.add('bg-white');
             } else {
-                navbar.classList.remove('shadow-md', 'bg-white');
-                navbar.classList.add('shadow-sm', 'bg-white/90');
+                header.classList.remove('shadow-md', 'bg-white');
+                header.classList.add('shadow-sm', 'bg-white/95');
             }
         });
     </script>
